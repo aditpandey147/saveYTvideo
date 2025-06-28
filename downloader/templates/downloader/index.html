@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YouTube Downloader</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function showLoader() {
+        document.getElementById("loader").style.display = "block";
+      }
+    </script>
+  </head>
+  <body style="text-align: center; margin-top: 100px">
+    <section class="syt-main">
+      <h2>YouTube Downloader (MP3 / MP4)</h2>
+
+      <form method="POST" action="/download/" onsubmit="showLoader()">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="link"
+          placeholder="Paste YouTube link"
+          style="width: 400px; padding: 10px"
+          required
+        /><br /><br />
+
+        <label>Select Format:</label>
+        <select name="format" style="padding: 10px">
+          <option value="mp3">MP3 (Audio)</option>
+          <option value="mp4_720">MP4 (720p Video)</option>
+          <option value="mp4_360">MP4 (360p Video)</option></select
+        ><br /><br />
+
+        <input type="submit" value="Download" style="padding: 10px 20px" />
+      </form>
+
+      <!-- 👇 The "Please wait..." message -->
+      <p
+        id="loader"
+        style="display: none; color: green; font-weight: bold; margin-top: 20px"
+      >
+        Please wait... your download is being prepared.
+      </p>
+    </section>
+  </body>
+</html>
