@@ -1,8 +1,6 @@
-# downloader/wsgi.py
-
 import os
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'downloader.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'yt_downloader.settings')
 
 application = get_wsgi_application()
