@@ -1,1 +1,1 @@
-web: gunicorn saveYTvideo.wsgi --log-file -
+web: gunicorn yourprojectname.wsgi --log-file -

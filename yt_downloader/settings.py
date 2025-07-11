@@ -121,4 +121,25 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR,"static"
+]
+
+import os, dj_database_url
+
+DEBUG = os.environ.get("DEBUG", "False") == "True"
+ALLOWED_HOSTS = [os.getenv("RENDER_EXTERNAL_HOSTNAME", "")]
+DATABASES = {
+  "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"), conn_max_age=600, ssl_require=True)
+}
+
+MIDDLEWARE.insert(
+    MIDDLEWARE.index('django.middleware.security.SecurityMiddleware') + 1,
+    'whitenoise.middleware.WhiteNoiseMiddleware'
+)
+
+STATIC_URL = '/static/'
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

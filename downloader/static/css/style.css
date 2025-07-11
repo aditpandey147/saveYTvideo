@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Inspiration&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Oxygen:wght@300;400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Archivo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+.yvd-logo {
+  width: 35%;
+  height: 50%;
+}
+.yvd-hero {
+  background-color: #221d6e;
+  padding-bottom: 120px;
+  padding-top: 120px;
+}
+/* nav.navbar.navbar-expand-lg.navbar-light.bg-white.px-2 {
+  height: 12vh;
+} */
+
+.yvd-heading-wrap {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  padding-bottom: 20px;
+}
+.yvd-para-wrap {
+  width: 637px;
+  letter-spacing: 1.2px;
+}
+.input-field {
+  width: 686px;
+  background-color: rgb(217, 217, 217, 20%);
+  border-radius: 15px;
+  border: none;
+  height: 40px;
+  padding: none;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+input::placeholder {
+  color: rgb(138, 133, 133);
+  opacity: 1;
+}
+
+input:focus {
+  border: 0px solid #00000000; /* Blue border */
+  outline: none; /* Optional: removes default blue glow */
+}
+
+.custom-select {
+  position: relative;
+  width: 193px;
+}
+
+.custom-select select {
+  width: 100%;
+  padding: 12px 40px 12px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  background: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-select select:focus {
+  border-color: #ffffff00;
+  outline: none;
+  box-shadow: 0 0 0px rgba(255, 255, 255, 0);
+}
+
+/* Font Awesome icon */
+.custom-select i {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #555;
+  pointer-events: none; /* makes sure clicks go to the select */
+}
+.text-field-main {
+  gap: 20px;
+}
+
+.paste-wrap {
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+/* From Uiverse.io by adamgiebl */ 
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.5em 0.8em 1.2em;
+  color: rgb(0, 0, 0);
+  background: #ffffff;
+  background: linear-gradient(
+    0deg,
+    rgb(253, 253, 255) 0%,
+    rgb(255, 255, 255) 100%
+  );
+  border: none;
+  /* box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be; */
+  letter-spacing: 0.05em;
+  border-radius: 15px;
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 8px;
+}
+
+/* .cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
+} */
+
+/* .cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+} */
+
+.button-main{
+  gap: 20px;
+}
+.footer-main{
+  background-color: white;
+  border: 2px solid balck;
+}
+
+h2{
+  color: red;
+}

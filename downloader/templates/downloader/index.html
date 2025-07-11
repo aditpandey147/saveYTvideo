@@ -1,45 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>YouTube Downloader</title>
-    <link rel="stylesheet" href="style.css" />
-    <script>
-      function showLoader() {
-        document.getElementById("loader").style.display = "block";
-      }
-    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
   </head>
-  <body style="text-align: center; margin-top: 100px">
-    <section class="syt-main">
-      <h2>YouTube Downloader (MP3 / MP4)</h2>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img class="yvd-logo" src="static/img/logo.webp" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Doc</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
+    <section class="yvd-hero d-flex justify-content-center align-item-center">
       <form method="POST" action="/download/" onsubmit="showLoader()">
         {% csrf_token %}
-        <input
-          type="text"
-          name="link"
-          placeholder="Paste YouTube link"
-          style="width: 400px; padding: 10px"
-          required
-        /><br /><br />
-
-        <label>Select Format:</label>
-        <select name="format" style="padding: 10px">
-          <option value="mp3">MP3 (Audio)</option>
-          <option value="mp4_720">MP4 (720p Video)</option>
-          <option value="mp4_360">MP4 (360p Video)</option></select
-        ><br /><br />
-
-        <input type="submit" value="Download" style="padding: 10px 20px" />
+        <div class="container">
+          <div class="row">
+            <div
+              class="col-md-12 d-flex justify-content-center align-item-center"
+            >
+              <div class="yvd-heading-wrap">
+                <h1 class="yvd-h1 text-center text-white">
+                  Download YouTube Videos Instantly — Fast, Free & Easy
+                </h1>
+                <div class="yvd-para-wrap">
+                  <p class="text-center text-white">
+                    Paste your YouTube video link below and download in MP4 or
+                    MP3 format — no signup needed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div
+              class="col-md-12 d-flex justify-content-center align-item-center"
+            >
+              <div
+                class="text-field-main d-flex justify-content-center align-item-cente"
+              >
+                <div class="text-field-wrap">
+                  <input
+                    class="input-field"
+                    type="text"
+                    name="link"
+                    id="link"
+                    placeholder="paste here"
+                  />
+                </div>
+                <div class="paste-wrap" onclick="pasteLink()">
+                  <i class="fa-solid fa-paste" style="color: #000000"></i>
+                  <p>Paste</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div
+              class="col-md-12 button-main d-flex justify-content-center align-item-center"
+            >
+              <div class="format-wrap">
+                <div
+                  class="custom-select d-flex justify-content-center align-item-center"
+                >
+                  <select name="format" required>
+                    <option selected disabled>Select Format</option>
+                    <option value="mp3">MP3 (Audio)</option>
+                    <option value="mp4_720">MP4 (720p Video)</option>
+                    <option value="mp4_360">MP4 (360p Video)</option>
+                  </select>
+                  <i class="fa-solid fa-caret-down" style="color: #000000"></i>
+                </div>
+              </div>
+              <input
+                type="submit"
+                class="cssbuttons-io-button"
+                value="Download"
+                style="padding: 10px 20px"
+              />
+            </div>
+          </div>
+        </div>
       </form>
-
-      <!-- 👇 The "Please wait..." message -->
-      <p
-        id="loader"
-        style="display: none; color: green; font-weight: bold; margin-top: 20px"
-      >
-        Please wait... your download is being prepared.
-      </p>
     </section>
+
+    <footer class="my-2 footer-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="footer-wrap text-center">
+              <p>Designed And Developed by DNP INFOTECH.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      async function pasteLink() {
+        try {
+          const text = await navigator.clipboard.readText();
+          document.getElementById("link").value = text;
+        } catch (err) {
+          alert("❌ Unable to paste. Please allow clipboard permission.");
+        }
+      }
+    </script>
   </body>
 </html>
