@@ -8,6 +8,9 @@ def index(request):
     return render(request, 'downloader/index.html')
 
 def download_video(request):
+    cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
+    print("✅ COOKIES EXISTS:", os.path.exists(cookies_path))
+    print("📁 BASE_DIR files:", os.listdir(settings.BASE_DIR))
     if request.method == 'POST':
         url = request.POST.get('link')
         selected_format = request.POST.get('format')
@@ -18,9 +21,6 @@ def download_video(request):
         output_dir = 'downloads'
         os.makedirs(output_dir, exist_ok=True)
         output_template = os.path.join(output_dir, '%(title)s.%(ext)s')
-        cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
-        print("✅ COOKIES EXISTS:", os.path.exists(cookies_path))
-        print("📁 BASE_DIR files:", os.listdir(settings.BASE_DIR))
 
 
         cmd = [
