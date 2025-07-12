@@ -46,5 +46,4 @@ def download_video(request):
             print("✅ Download Success:\n", result.stdout)
         except subprocess.CalledProcessError as e:
             print("❌ Download Failed:\n", e.stderr)
-
     return HttpResponse("❌ Invalid request.")
