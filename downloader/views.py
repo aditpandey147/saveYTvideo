@@ -42,9 +42,9 @@ def download_video(request):
             return HttpResponse("❌ Invalid format selected.")
 
         try:
-        result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-        print("✅ Download Success:\n", result.stdout)
+            result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            print("✅ Download Success:\n", result.stdout)
         except subprocess.CalledProcessError as e:
-        print("❌ Download Failed:\n", e.stderr)
+            print("❌ Download Failed:\n", e.stderr)
 
     return HttpResponse("❌ Invalid request.")
