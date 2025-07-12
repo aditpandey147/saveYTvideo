@@ -29,6 +29,7 @@ def download_video(request):
         if selected_format == 'mp3':
             command = [
                 'yt-dlp',
+                '--cookies', cookies_path,
                 '-x',
                 '--audio-format', 'mp3',
                 '--ffmpeg-location', '/usr/bin/ffmpeg',
@@ -39,6 +40,7 @@ def download_video(request):
         elif selected_format == 'mp4_720':
             command = [
                 'yt-dlp',
+                '--cookies', cookies_path,
                 '-f', 'bestvideo[height<=720]+bestaudio/best[height<=720]',
                 '--merge-output-format', 'mp4',
                 '-o', output_template,
@@ -48,6 +50,7 @@ def download_video(request):
         elif selected_format == 'mp4_360':
             command = [
                 'yt-dlp',
+                '--cookies', cookies_path,
                 '-f', 'bestvideo[height<=360]+bestaudio/best[height<=360]',
                 '--merge-output-format', 'mp4',
                 '-o', output_template,
