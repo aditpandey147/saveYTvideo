@@ -19,6 +19,7 @@ def download_video(request):
         os.makedirs(output_dir, exist_ok=True)
         output_template = os.path.join(output_dir, '%(title)s.%(ext)s')
         cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
+        print("COOKIES FILE EXISTS:", os.path.exists(cookies_path))
 
         cmd = [
             'yt-dlp',
