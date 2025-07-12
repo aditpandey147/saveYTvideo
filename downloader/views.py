@@ -18,7 +18,12 @@ def download_video(request):
         os.makedirs(output_dir, exist_ok=True)
         output_template = os.path.join(output_dir, '%(title)s.%(ext)s')
 
-        command = []
+        cmd = [
+            'yt-dlp',
+            '--cookies-from-browser', 'chrome',  # auto-fetch cookies
+            '-o', output_template,
+            url
+        ]
         ext = ""
 
         if selected_format == 'mp3':
