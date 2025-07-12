@@ -67,6 +67,7 @@ def download_video(request):
 
         except subprocess.CalledProcessError as e:
             print("❌ Download Failed:\n", e.stderr)
-            return HttpResponse(f"❌ Download failed:\n{e.stderr}")
+            return HttpResponse("❌ Download failed: This video is either unavailable or restricted. Please try another link.")
+
 
     return HttpResponse("❌ Invalid request.")
