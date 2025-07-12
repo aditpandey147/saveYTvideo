@@ -2,10 +2,6 @@ import os
 import subprocess
 from django.shortcuts import render
 from django.http import FileResponse, HttpResponse
-from django.conf import settings
-
-DOWNLOAD_DIR = os.path.join(settings.BASE_DIR, 'downloads')
-os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 def index(request):
     return render(request, 'downloader/index.html')
@@ -15,13 +11,23 @@ def download_video(request):
         url = request.POST.get('link')
         selected_format = request.POST.get('format')
 
-        output_template = os.path.join(DOWNLOAD_DIR, '%(title)s.%(ext)s')
+        if not url:
+            return HttpResponse("❌ Please enter a YouTube link.")
+
+        # Check if video is available before download
+        check_command = ['yt-dlp', '--skip-download', '--print', 'title', url]
+        try:
+            subprocess.run(check_command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        except subprocess.CalledProcessError as e:
+            return HttpResponse("❌ This video is not available or is restricted. Try another link.")
+
+        # Prepare download command
+        output_template = 'downloads/%(title)s.%(ext)s'
 
         if selected_format == 'mp3':
             command = [
                 'yt-dlp',
-                '-x',
-                '--audio-format', 'mp3',
+                '-x', '--audio-format', 'mp3',
                 '--ffmpeg-location', '/usr/bin/ffmpeg',
                 '-o', output_template,
                 url
@@ -48,26 +54,18 @@ def download_video(request):
 
         try:
             result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            print("✅ Download Success:\n", result.stdout)
+            print("✅ Download successful:", result.stdout)
 
-            # Get downloaded file path
-            lines = result.stdout.splitlines()
-            downloaded_file = None
-            for line in lines:
-                if '[ExtractAudio]' in line or 'Destination' in line:
-                    downloaded_file = line.split('Destination: ')[-1].strip()
-                    break
+            # Find downloaded file path from yt-dlp output
+            for line in result.stdout.splitlines():
+                if '[ExtractAudio]' in line or '[download] Destination:' in line:
+                    filepath = line.split(':', 1)[-1].strip()
+                    if os.path.exists(filepath):
+                        return FileResponse(open(filepath, 'rb'), as_attachment=True)
 
-            if not downloaded_file or not os.path.exists(downloaded_file):
-                return HttpResponse("❌ File not found after download.")
-
-            # Stream file to user
-            response = FileResponse(open(downloaded_file, 'rb'), as_attachment=True)
-            return response
-
+            return HttpResponse("✅ Download completed. Check downloads folder.")
         except subprocess.CalledProcessError as e:
-            print("❌ Download Failed:\n", e.stderr)
-            return HttpResponse("❌ Download failed: This video is either unavailable or restricted. Please try another link.")
-
+            print("❌ Download error:", e.stderr)
+            return HttpResponse("❌ Download failed. Please check the link or try a different video.")
 
     return HttpResponse("❌ Invalid request.")
