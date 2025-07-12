@@ -16,7 +16,8 @@ def download_video(request):
         if selected_format == 'mp3':
             command = [
                 'yt-dlp',
-                '-x', '--audio-format', 'mp3',
+                '-x', 
+                '--audio-format', 'mp3',
                 '--ffmpeg-location', '/usr/bin/ffmpeg',
                 '-o', output_template,
                 url
