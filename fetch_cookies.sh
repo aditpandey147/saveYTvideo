@@ -1,15 +1,12 @@
-#!/bin/bash
+# fetch_cookies.py
+import urllib.request
 
-echo "🔁 Fetching cookies.txt from Google Drive..."
+url = "https://drive.google.com/uc?export=download&id=1Y-Vst2pQZGEA_SUWbFVDkUn0N_ZGltxF"
+output_path = "cookies.txt"
 
-# ✅ REPLACE ONLY THIS FILE ID with your real one
-FILE_ID="YOUR_FILE_ID_HERE"
-
-curl -L -o cookies.txt "https://drive.google.com/uc?export=download&id=1Y-Vst2pQZGEA_SUWbFVDkUn0N_ZGltxF"
-
-if [ -f cookies.txt ]; then
-    echo "✅ cookies.txt downloaded!"
-else
-    echo "❌ Failed to download cookies.txt"
-    ls -l
-fi
+try:
+    print("🔁 Downloading cookies.txt...")
+    urllib.request.urlretrieve(url, output_path)
+    print("✅ cookies.txt downloaded successfully.")
+except Exception as e:
+    print("❌ Failed to download cookies.txt:", e)

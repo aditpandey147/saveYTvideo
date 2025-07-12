@@ -3,4 +3,4 @@ services:
     name: yt-downloader
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: bash fetch_cookies.sh && gunicorn yt_downloader.wsgi:application
+    startCommand: python fetch_cookies.py && gunicorn yt_downloader.wsgi:application
