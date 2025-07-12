@@ -17,7 +17,7 @@ def download_video(request):
             command = [
                 'yt-dlp',
                 '-x', '--audio-format', 'mp3',
-                '--ffmpeg-location', r'C:\ffmpeg\bin',  # 👈 point to your folder!
+                '--ffmpeg-location', '/usr/bin/ffmpeg',
                 '-o', output_template,
                 url
             ]
