@@ -17,6 +17,7 @@ def download_video(request):
         output_dir = 'downloads'
         os.makedirs(output_dir, exist_ok=True)
         output_template = os.path.join(output_dir, '%(title)s.%(ext)s')
+        cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
 
         cmd = [
             'yt-dlp',
