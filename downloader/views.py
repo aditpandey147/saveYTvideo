@@ -42,16 +42,9 @@ def download_video(request):
             return HttpResponse("❌ Invalid format selected.")
 
         try:
-            subprocess.run(command, check=True)
-
-            # Find the latest file
-            files = [f for f in os.listdir('downloads') if f.endswith(ext)]
-            if not files:
-                return HttpResponse("❌ File not downloaded.")
-            latest_file = max(files, key=lambda f: os.path.getctime(os.path.join('downloads', f)))
-            return FileResponse(open(os.path.join('downloads', latest_file), 'rb'), as_attachment=True)
-
-        except Exception as e:
-            return HttpResponse(f"❌ Error: {str(e)}")
+        result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        print("✅ Download Success:\n", result.stdout)
+        except subprocess.CalledProcessError as e:
+        print("❌ Download Failed:\n", e.stderr)
 
     return HttpResponse("❌ Invalid request.")
