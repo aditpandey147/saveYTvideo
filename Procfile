@@ -1,1 +1,1 @@
-web: gunicorn yourprojectname.wsgi --log-file -
+web: bash fetch_cookies.sh && gunicorn yt_downloader.wsgi:application
