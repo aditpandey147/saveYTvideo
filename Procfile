@@ -1,1 +1,1 @@
-web: bash fetch_cookies.sh && gunicorn yt_downloader.wsgi:application
+web: python fetch_cookies.py && gunicorn yt_downloader.wsgi:application
