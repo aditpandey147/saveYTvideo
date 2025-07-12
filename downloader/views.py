@@ -8,12 +8,13 @@ def index(request):
     return render(request, 'downloader/index.html')
 
 def download_video(request):
-    cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
-    print("✅ COOKIES EXISTS:", os.path.exists(cookies_path))
-    print("📁 BASE_DIR files:", os.listdir(settings.BASE_DIR))
+    
     if request.method == 'POST':
         url = request.POST.get('link')
         selected_format = request.POST.get('format')
+        cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
+        print("✅ COOKIES EXISTS:", os.path.exists(cookies_path))
+        print("📁 BASE_DIR files:", os.listdir(settings.BASE_DIR))
 
         if not url or not selected_format:
             return HttpResponse("❌ Missing link or format.")

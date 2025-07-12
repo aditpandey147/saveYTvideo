@@ -1,8 +1,10 @@
 # fetch_cookies.py
 import urllib.request
+import os
 
-URL = "https://drive.google.com/uc?export=download&id=1Y-Vst2pQZGEA_SUWbFVDkUn0N_ZGltxF"
-OUTPUT = "cookies.txt"
+FILE_ID = "1Y-Vst2pQZGEA_SUWbFVDkUn0N_ZGltxF"  # 🔁 Replace with YOUR file ID
+URL = f"https://drive.google.com/uc?export=download&id={FILE_ID}"
+OUTPUT = os.path.join(os.path.dirname(__file__), "cookies.txt")
 
 try:
     print("⬇️ Downloading cookies.txt from Google Drive...")
