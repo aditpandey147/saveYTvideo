@@ -62,8 +62,7 @@ def download_video(request):
                     filename = line.split('Destination')[-1].strip()
                     if os.path.exists(filename):
                         return FileResponse(open(filename, 'rb'), as_attachment=True)
-        except subprocess.CalledProcessError as e:
-            print("❌ yt-dlp failed:\n", e.stderr)
-            return HttpResponse("❌ Download failed:<br><pre>" + e.stderr + "</pre>")
-
+       except subprocess.CalledProcessError as e:
+        print("❌ yt-dlp failed with this stderr:\n", e.stderr)
+        return HttpResponse("❌ Download failed. Error below:<br><pre>" + e.stderr + "</pre>")
     return HttpResponse("❌ Invalid request.")
