@@ -7,7 +7,7 @@ import random
 import urllib.request
 
 def download_cookies():
-    cookie_url = 'https://drive.google.com/uc?export=download&id=YOUR_FILE_ID'
+    cookie_url = 'https://drive.google.com/uc?export=download&id=1Y-Vst2pQZGEA_SUWbFVDkUn0N_ZGltxF'
     cookie_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
     if not os.path.exists(cookie_path):
         urllib.request.urlretrieve(cookie_url, cookie_path)
