@@ -15,7 +15,6 @@ def download_video(request):
 
         cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
         print("✅ COOKIES EXISTS:", os.path.exists(cookies_path))
-        print("📁 BASE_DIR files:", os.listdir(settings.BASE_DIR))
 
         if not url or not selected_format:
             return HttpResponse("❌ Missing link or format.")
@@ -31,70 +30,48 @@ def download_video(request):
         ]
         proxy = random.choice(proxies)
 
-        command = []
-        ext = ''
-
+        # Choose format
         if selected_format == 'mp3':
             command = [
-                'yt-dlp',
-                '--cookies', cookies_path,
+                'yt-dlp', '--cookies', cookies_path,
                 '--proxy', proxy,
-                '-x',
-                '--audio-format', 'mp3',
+                '-x', '--audio-format', 'mp3',
                 '--ffmpeg-location', '/usr/bin/ffmpeg',
-                '-o', output_template,
-                url
+                '-o', output_template, url
             ]
-            ext = '.mp3'
-
         elif selected_format == 'mp4_720':
             command = [
-                'yt-dlp',
-                '--cookies', cookies_path,
+                'yt-dlp', '--cookies', cookies_path,
                 '--proxy', proxy,
                 '-f', 'bestvideo[height<=720]+bestaudio/best[height<=720]',
                 '--merge-output-format', 'mp4',
-                '-o', output_template,
-                url
+                '-o', output_template, url
             ]
-            ext = '.mp4'
-
         elif selected_format == 'mp4_360':
             command = [
-                'yt-dlp',
-                '--cookies', cookies_path,
+                'yt-dlp', '--cookies', cookies_path,
                 '--proxy', proxy,
                 '-f', 'bestvideo[height<=360]+bestaudio/best[height<=360]',
                 '--merge-output-format', 'mp4',
-                '-o', output_template,
-                url
+                '-o', output_template, url
             ]
-            ext = '.mp4'
-
         else:
             return HttpResponse("❌ Invalid format selected.")
 
         try:
-            print("▶️ Running yt-dlp command...")
             result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
-
             if result.returncode != 0:
-                print("❌ yt-dlp failed:", result.stderr)
                 return HttpResponse("❌ yt-dlp failed.<br><pre>" + result.stderr + "</pre>")
 
             for line in result.stdout.splitlines():
                 if 'Destination' in line:
                     filename = line.split('Destination')[-1].strip()
                     if os.path.exists(filename):
-                        print("✅ File ready:", filename)
                         return FileResponse(open(filename, 'rb'), as_attachment=True)
 
-            return HttpResponse("❌ Could not find the downloaded file.")
+            return HttpResponse("❌ Could not find downloaded file.")
 
         except subprocess.TimeoutExpired:
-            return HttpResponse("❌ yt-dlp took too long and was killed. Try again.")
-        except Exception as e:
-            print("❌ Unexpected error:", str(e))
-            return HttpResponse("❌ Unexpected error:<br><pre>" + str(e) + "</pre>")
+            return HttpResponse("❌ yt-dlp timed out. Try again.")
 
-    return HttpResponse("❌ Invalid request method.")
+    return HttpResponse("❌ Invalid request.")
