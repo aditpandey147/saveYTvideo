@@ -70,31 +70,28 @@ def download_video(request):
                 url
             ]
             file_ext = '.mp4'
+
         else:
             return HttpResponse("❌ Invalid format selected.")
 
         try:
-            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-            print("✅ yt-dlp output:\n", result.stdout)
+            print("▶️ Running yt-dlp...")
+            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
 
-            for filename in os.listdir(output_dir):
-                if filename.endswith(file_ext):
-                    file_path = os.path.join(output_dir, filename)
-                    if os.path.exists(file_path):
-                        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
+            if result.returncode != 0:
+                print("❌ yt-dlp failed:", result.stderr)
+                return HttpResponse("❌ yt-dlp failed.<br><pre>" + result.stderr + "</pre>")
 
-            return HttpResponse("❌ File not found after download.")
+            for line in result.stdout.splitlines():
+                if 'Destination' in line:
+                    filename = line.split('Destination')[-1].strip()
+                    if os.path.exists(filename):
+                        print("✅ Sending file:", filename)
+                        return FileResponse(open(filename, 'rb'), as_attachment=True)
 
-        except subprocess.CalledProcessError as e:
-            print("❌ yt-dlp failed:\n", e.stderr)
-            return HttpResponse("❌ Download failed. Error below:<br><pre>" + e.stderr + "</pre>", status=500)
+            return HttpResponse("❌ Could not find downloaded file.")
 
-        except SystemExit as e:
-            print("❌ yt-dlp caused SystemExit:", e)
-            return HttpResponse("❌ SystemExit error occurred. yt-dlp exited with code 1. Likely due to proxy, cookie, or region issue.", status=500)
+        except subprocess.TimeoutExpired:
+            return HttpResponse("❌ yt-dlp took too long and was killed. Try again.")
 
-        except Exception as e:
-            print("❌ Unexpected error:", str(e))
-            return HttpResponse(f"❌ Unexpected error: {str(e)}", status=500)
-
-    return HttpResponse("❌ Invalid request method.")
+    return HttpResponse("❌ Invalid request.")
