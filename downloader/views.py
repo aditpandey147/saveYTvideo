@@ -4,7 +4,6 @@ from django.conf import settings
 from django.shortcuts import render
 from django.http import FileResponse, HttpResponse
 import random
-proxy = random.choice(proxies)
 
 def index(request):
     return render(request, 'downloader/index.html')
