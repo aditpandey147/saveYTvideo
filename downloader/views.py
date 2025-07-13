@@ -29,6 +29,7 @@ def download_video(request):
             "http://49.207.251.89:61033",
             "http://103.86.155.78:3128",
         ]
+        proxy = random.choice(proxies)
 
 
         cmd = [
