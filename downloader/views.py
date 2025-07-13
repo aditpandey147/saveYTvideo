@@ -31,8 +31,8 @@ def download_video(request):
         ]
         proxy = random.choice(proxies)
 
-        file_ext = ''
         command = []
+        ext = ''
 
         if selected_format == 'mp3':
             command = [
@@ -45,7 +45,7 @@ def download_video(request):
                 '-o', output_template,
                 url
             ]
-            file_ext = '.mp3'
+            ext = '.mp3'
 
         elif selected_format == 'mp4_720':
             command = [
@@ -57,7 +57,7 @@ def download_video(request):
                 '-o', output_template,
                 url
             ]
-            file_ext = '.mp4'
+            ext = '.mp4'
 
         elif selected_format == 'mp4_360':
             command = [
@@ -69,13 +69,13 @@ def download_video(request):
                 '-o', output_template,
                 url
             ]
-            file_ext = '.mp4'
+            ext = '.mp4'
 
         else:
             return HttpResponse("❌ Invalid format selected.")
 
         try:
-            print("▶️ Running yt-dlp...")
+            print("▶️ Running yt-dlp command...")
             result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=60)
 
             if result.returncode != 0:
@@ -86,12 +86,15 @@ def download_video(request):
                 if 'Destination' in line:
                     filename = line.split('Destination')[-1].strip()
                     if os.path.exists(filename):
-                        print("✅ Sending file:", filename)
+                        print("✅ File ready:", filename)
                         return FileResponse(open(filename, 'rb'), as_attachment=True)
 
-            return HttpResponse("❌ Could not find downloaded file.")
+            return HttpResponse("❌ Could not find the downloaded file.")
 
         except subprocess.TimeoutExpired:
             return HttpResponse("❌ yt-dlp took too long and was killed. Try again.")
+        except Exception as e:
+            print("❌ Unexpected error:", str(e))
+            return HttpResponse("❌ Unexpected error:<br><pre>" + str(e) + "</pre>")
 
-    return HttpResponse("❌ Invalid request.")
+    return HttpResponse("❌ Invalid request method.")
