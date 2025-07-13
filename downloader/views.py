@@ -3,6 +3,8 @@ import subprocess
 from django.conf import settings 
 from django.shortcuts import render
 from django.http import FileResponse, HttpResponse
+import random
+proxy = random.choice(proxies)
 
 def index(request):
     return render(request, 'downloader/index.html')
@@ -22,6 +24,11 @@ def download_video(request):
         output_dir = 'downloads'
         os.makedirs(output_dir, exist_ok=True)
         output_template = os.path.join(output_dir, '%(title)s.%(ext)s')
+        proxies = [
+            "http://103.139.242.178:8080",
+            "http://49.207.251.89:61033",
+            "http://103.86.155.78:3128",
+        ]
 
 
         cmd = [
@@ -36,6 +43,7 @@ def download_video(request):
             command = [
                 'yt-dlp',
                 '--cookies', cookies_path,
+                '--proxy', proxy,
                 '-x',
                 '--audio-format', 'mp3',
                 '--ffmpeg-location', '/usr/bin/ffmpeg',
@@ -47,6 +55,7 @@ def download_video(request):
             command = [
                 'yt-dlp',
                 '--cookies', cookies_path,
+                '--proxy', proxy,
                 '-f', 'bestvideo[height<=720]+bestaudio/best[height<=720]',
                 '--merge-output-format', 'mp4',
                 '-o', output_template,
@@ -57,6 +66,7 @@ def download_video(request):
             command = [
                 'yt-dlp',
                 '--cookies', cookies_path,
+                '--proxy', proxy,
                 '-f', 'bestvideo[height<=360]+bestaudio/best[height<=360]',
                 '--merge-output-format', 'mp4',
                 '-o', output_template,
