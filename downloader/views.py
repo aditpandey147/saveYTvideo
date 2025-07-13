@@ -69,21 +69,28 @@ def download_video(request):
     else:
         return HttpResponse("❌ Invalid format selected.")
 
-    try:
-        result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
-        print("✅ yt-dlp output:\n", result.stdout)
+            try:
+            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, check=True)
+            print("✅ yt-dlp output:\n", result.stdout)
 
-        # Find the downloaded file
-        for filename in os.listdir(output_dir):
-            if filename.endswith(file_ext):
-                file_path = os.path.join(output_dir, filename)
-                if os.path.exists(file_path):
-                    return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
+            # Find downloaded file
+            for filename in os.listdir(output_dir):
+                if filename.endswith(file_ext):
+                    file_path = os.path.join(output_dir, filename)
+                    if os.path.exists(file_path):
+                        return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
 
-        return HttpResponse("❌ File not found after download.")
-    except subprocess.CalledProcessError as e:
-        print("❌ yt-dlp error:\n", e.stderr)
-        return HttpResponse("❌ Download failed. Error below:<br><pre>" + e.stderr + "</pre>")
-    except Exception as e:
-        print("❌ Unexpected error:\n", str(e))
-        return HttpResponse(f"❌ Unexpected error: {str(e)}")
+            return HttpResponse("❌ File not found after download.")
+        
+        except subprocess.CalledProcessError as e:
+            print("❌ yt-dlp failed:\n", e.stderr)
+            return HttpResponse("❌ Download failed. Error below:<br><pre>" + e.stderr + "</pre>", status=500)
+
+        except SystemExit as e:
+            print("❌ yt-dlp caused SystemExit:", e)
+            return HttpResponse("❌ SystemExit error occurred. yt-dlp exited with code 1. Likely due to proxy, cookie or region issue.", status=500)
+
+        except Exception as e:
+            print("❌ Unexpected error:", str(e))
+            return HttpResponse(f"❌ Unexpected error: {str(e)}", status=500)
+
