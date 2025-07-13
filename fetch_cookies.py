@@ -1,14 +1,12 @@
-# fetch_cookies.py
-import urllib.request
-import os
+import browser_cookie3
 
-FILE_ID = "1Y-Vst2pQZGEA_SUWbFVDkUn0N_ZGltxF"  # 🔁 Replace with YOUR file ID
-URL = f"https://drive.google.com/uc?export=download&id={FILE_ID}"
-OUTPUT = os.path.join(os.path.dirname(__file__), "cookies.txt")
+output_path = "cookies.txt"
 
-try:
-    print("⬇️ Downloading cookies.txt from Google Drive...")
-    urllib.request.urlretrieve(URL, OUTPUT)
-    print("✅ cookies.txt downloaded and saved!")
-except Exception as e:
-    print("❌ Error downloading cookies.txt:", e)
+with open(output_path, "w") as f:
+    cj = browser_cookie3.chrome(domain_name='youtube.com')
+    for cookie in cj:
+        f.write(f"{cookie.domain}\tTRUE\t{cookie.path}\t"
+                f"{str(cookie.secure).upper()}\t{int(cookie.expires)}\t"
+                f"{cookie.name}\t{cookie.value}\n")
+
+print(f"✅ Saved cookies to {output_path}")

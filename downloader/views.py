@@ -14,7 +14,7 @@ def download_video(request):
         selected_format = request.POST.get('format')
 
         cookies_path = os.path.join(settings.BASE_DIR, 'cookies.txt')
-        print("\n✅ COOKIES EXISTS:", os.path.exists(cookies_path))
+        print("✅ COOKIES EXISTS:", os.path.exists(cookies_path))
         print("📁 BASE_DIR files:", os.listdir(settings.BASE_DIR))
 
         if not url or not selected_format:
