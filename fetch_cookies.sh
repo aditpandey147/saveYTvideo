@@ -1,7 +1,7 @@
 # fetch_cookies.py
 import urllib.request
 
-url = "https://drive.google.com/uc?export=download&id=1lv2qcVGMC7jLT3cX7LXPWB9Qne8RHAC4"
+url = "https://drive.google.com/uc?export=download&id=1k064giVco56MSo6eYn7Ol58kw1muISCf"
 output_path = "cookies.txt"
 
 try:

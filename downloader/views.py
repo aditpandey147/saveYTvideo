@@ -7,7 +7,7 @@ from django.http import FileResponse, HttpResponse
 from django.shortcuts import render
 
 # Your Google Drive file ID
-GOOGLE_DRIVE_FILE_ID = '1lv2qcVGMC7jLT3cX7LXPWB9Qne8RHAC4'
+GOOGLE_DRIVE_FILE_ID = '1k064giVco56MSo6eYn7Ol58kw1muISCf'
 COOKIES_FILE_NAME = 'cookies.txt'
 COOKIES_URL = f'https://drive.google.com/uc?export=download&id={GOOGLE_DRIVE_FILE_ID}'
 
