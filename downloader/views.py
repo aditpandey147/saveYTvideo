@@ -94,7 +94,7 @@ def download_video(request):
 
         try:
             print("▶️ Running yt-dlp...")
-            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=120)
+            result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=240)
             if result.returncode != 0:
                 return HttpResponse("❌ yt-dlp failed.<br><pre>" + result.stderr + "</pre>")
 
