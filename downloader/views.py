@@ -110,6 +110,10 @@ def download_video(request):
         except subprocess.TimeoutExpired:
             return HttpResponse("❌ yt-dlp took too long and was killed. Try again.")
         except Exception as e:
-            return HttpResponse("❌ Unexpected error:<br><pre>" + str(e) + "</pre>")
+            import traceback
+            error_log = traceback.format_exc()
+            print("🔥 Full error:\n", error_log)
+            return HttpResponse(f"❌ Internal Error:<br><pre>{error_log}</pre>")
+
 
     return HttpResponse("❌ Invalid request.")
