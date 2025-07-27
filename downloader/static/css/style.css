@@ -148,3 +148,61 @@ input:focus {
 h2{
   color: red;
 }
+
+.guide{
+   background-color: #221d6e;
+  padding-bottom: 120px;
+}
+.g-heading-main{
+  display: felx;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+}
+.g-heading-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.g-heading-text{
+  width: 500px;
+  text-align: center;
+}
+
+.a-left-image-wrap img{
+  width: 419px;
+  height: 419px;
+  border-radius: 15px;
+  overflow: hidden;
+  object-fit:cover ;
+}
+.a-left-image-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h4{
+  color: white;
+  line-height: 24px;
+}
+
+.second-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h5-padding{
+  padding-bottom: 15px;
+}
+
+.icon-wrap{
+  display: flex;
+  gap: 15px;
+  justify-content: start;
+  align-items: start;
+}
+.step-heading-wrap{
+  padding: 0px 0px 15px 0px;
+}

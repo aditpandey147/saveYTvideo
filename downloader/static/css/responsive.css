@@ -3,9 +3,15 @@
     flex-direction: column;
 }
 .yvd-hero {
-    background-color: #221d6e;
-    padding-bottom: 70px;
-    padding-top: 70px;
+  background-color: #221d6e;
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
+.g-heading-main {
+    display: felx;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 35px;
 }
     
 }
@@ -33,6 +39,19 @@
     width: 78%;
     height: 50%;
 }
+.row{
+    gap: 30px;
+}
+.a-left-image-wrap img {
+    width: 100%;
+    height: 419px;
+    border-radius: 15px;
+    overflow: hidden;
+    object-fit: cover;
+}
+    .container, .container-sm {
+        max-width: 100%;
+}
 }
 
 @media (max-width:470px) {
@@ -44,7 +63,7 @@
     width: 100%;
 }
 .yvd-heading-wrap{
-    width: 300px;
+    width: 344px;
   }
   button.cssbuttons-io-button {
     text-align: center;
@@ -55,7 +74,7 @@
 width: 100%;
 }
     .yvd-para-wrap {
-        width: 300px;
+        width: 340px;
         letter-spacing: 1.2px;
     }
     .text-field-main.d-flex.justify-content-center.align-item-cente {
