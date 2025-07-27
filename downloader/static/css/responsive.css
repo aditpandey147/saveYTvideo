@@ -29,6 +29,15 @@
 .nav-top-padding{
     padding-top: 15px;
 }
+.about-main{
+  background-color: white;
+  border-radius: 15px;
+  padding: 70px 0px 70px 0px;
+}
+.about{
+  background-color: #221d6e;
+  padding-bottom: 70px;
+}
     
 }
 @media (max-width:820px){
