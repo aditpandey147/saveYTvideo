@@ -46,7 +46,7 @@
   padding-right: 15px;
 }
 input::placeholder {
-  color: rgb(138, 133, 133);
+  color: rgb(255, 255, 255);
   opacity: 1;
 }
 
