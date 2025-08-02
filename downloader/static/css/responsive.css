@@ -13,22 +13,6 @@
     align-items: center;
     padding-bottom: 35px;
 }
-.navbar-toggler-icon {
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    vertical-align: middle;
-    background-image: var(--bs-navbar-toggler-icon-bg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-}
-.nav-item{
-  padding: 0px;
-}
-.nav-top-padding{
-    padding-top: 15px;
-}
 .about-main{
   background-color: white;
   border-radius: 15px;
@@ -37,6 +21,14 @@
 .about{
   background-color: #221d6e;
   padding-bottom: 70px;
+}
+.step{
+  background-color: #221d6e;
+  padding: 0px 0px 60px 0px;
+}
+.guide {
+    background-color: #221d6e;
+    padding-bottom: 60px;
 }
     
 }
@@ -77,6 +69,20 @@
     .container, .container-sm {
         max-width: 100%;
 }
+.about{
+  background-color: #221d6e;
+  padding-bottom: 70px;
+}
+}
+@media (max-width:567px){
+.step-wrap {
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    flex-direction: column;
+}
 }
 
 @media (max-width:470px) {
@@ -105,4 +111,17 @@ width: 100%;
     .text-field-main.d-flex.justify-content-center.align-item-cente {
     width: 100%;
 }
+.card-text {
+    font-size: 19px;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 15px 15px 15px;
+
+}
+
 }
