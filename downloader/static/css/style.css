@@ -48,8 +48,9 @@
   padding-right: 15px;
 }
 input::placeholder {
-  color: rgb(138, 133, 133);
+  color: rgba(255, 255, 255, 0.322);
   opacity: 1;
+  font-weight: 400;
 }
 
 input:focus {
