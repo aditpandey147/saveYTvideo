@@ -39,7 +39,7 @@
 .input-field {
   width: 686px;
   background-color: rgb(217, 217, 217, 20%);
-  border-radius: 15px;
+  border-radius: 8px;
   border: none;
   height: 40px;
   padding: none;
@@ -68,7 +68,7 @@ input:focus {
   padding: 12px 40px 12px 15px;
   font-size: 16px;
   border: 2px solid #ccc;
-  border-radius: 15px;
+  border-radius: 8px;
   background: #fff;
   appearance: none;
   -webkit-appearance: none;
@@ -103,7 +103,7 @@ input:focus {
   justify-content: center;
   align-items: center;
   gap: 7px;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 /* From Uiverse.io by adamgiebl */ 
 .cssbuttons-io-button {
@@ -124,7 +124,7 @@ input:focus {
   border: none;
   /* box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be; */
   letter-spacing: 0.05em;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 
 .cssbuttons-io-button svg {
@@ -167,23 +167,6 @@ input:focus {
   text-align: center;
 }
 
-.a-left-image-wrap img{
-  width: 419px;
-  height: 419px;
-  border-radius: 15px;
-  overflow: hidden;
-  object-fit:cover ;
-}
-.a-left-image-wrap{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-h4{
-  color: white;
-  line-height: 24px;
-}
-
 .second-row{
   display: flex;
   justify-content: center;
@@ -209,11 +192,7 @@ h4{
   padding-bottom: 120px;
 }
 
-.about-main{
-  background-color: white;
-  border-radius: 15px;
-  padding: 120px 0px 120px 0px;
-}
+
 .text-color-main{
   color: #221d6e;
 }
