@@ -5,13 +5,6 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import path
 from django.shortcuts import reverse
 
-urlpatterns = [
-    path('', views.index, name='index'),
-    path('download/', views.download_video, name='download_video'),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
-]
-
-
 class StaticViewSitemap(Sitemap):
     changefreq = "weekly"
     priority = 0.8
@@ -25,3 +18,9 @@ class StaticViewSitemap(Sitemap):
 sitemaps = {
     'static': StaticViewSitemap,
 }
+
+urlpatterns = [
+    path('', views.index, name='index'),
+    path('download/', views.download_video, name='download_video'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+]
