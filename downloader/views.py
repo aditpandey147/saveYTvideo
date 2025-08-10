@@ -29,7 +29,21 @@ def download_cookies():
     return cookies_path
 
 def index(request):
-    return render(request, 'downloader/index.html')
+    faqs = [
+        {
+            'question': 'How do I download a YouTube video?',
+            'answer': 'Simply paste the YouTube video URL into the input box, select the format, and click Download.'
+        },
+        {
+            'question': 'Is it safe to use your downloader?',
+            'answer': 'Yes, our service does not store your personal data and is completely safe to use.'
+        },
+        {
+            'question': 'Which formats do you support?',
+            'answer': 'We support popular formats like MP4, MP3, and WebM in multiple qualities such as 720p and 360p.'
+        },
+    ]
+    return render(request, 'downloader/index.html', {'faqs': faqs})
 
 def download_video(request):
     if request.method == 'POST':
@@ -139,3 +153,4 @@ def faq_view(request):
         },
     ]
     return render(request, 'faq.html', {'faqs': faqs})
+
