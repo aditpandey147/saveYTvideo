@@ -407,3 +407,40 @@ a.nav-link {
   margin-bottom: 15px;
   display: inline-block;
 }
+
+.hero-section {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  padding: 80px 0;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/57920a1e-6861-425f-a935-50298990ff49.png")
+    center/cover no-repeat;
+  opacity: 0.1;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
