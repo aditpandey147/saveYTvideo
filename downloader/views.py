@@ -119,4 +119,23 @@ def download_video(request):
     return HttpResponse("❌ Invalid request.")
 
 def blog(request):
+
    return render(request, 'downloader/blog.html')
+
+
+def faq_view(request):
+    faqs = [
+        {
+            'question': 'How do I download a YouTube video?',
+            'answer': 'Simply paste the YouTube video URL into the input box, select the format, and click Download.'
+        },
+        {
+            'question': 'Is it safe to use your downloader?',
+            'answer': 'Yes, our service does not store your personal data and is completely safe to use.'
+        },
+        {
+            'question': 'Which formats do you support?',
+            'answer': 'We support popular formats like MP4, MP3, and WebM in multiple qualities such as 720p and 360p.'
+        },
+    ]
+    return render(request, 'faq.html', {'faqs': faqs})
