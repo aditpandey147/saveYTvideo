@@ -20,8 +20,9 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path('', views.index, name='home'),
+    path('', views.index, name='index'),
     path('download/', views.download_video, name='download_video'),
     path('blog/', views.blog, name='blog'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+
 ]
