@@ -117,3 +117,6 @@ def download_video(request):
 
 
     return HttpResponse("❌ Invalid request.")
+
+def blog(request):
+   return render(request, "blog.html",)

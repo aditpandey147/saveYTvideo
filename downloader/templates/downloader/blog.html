@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css//bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg nav-bg px-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img class="yvd-logo" src="static/img/logo.webp" alt="logo"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse nav-top-padding" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <i class="fa-solid fa-download fa-sm" style="color: #000000;"></i>
+                <p>Home</p>
+              </a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-clock-rotate-left fa-sm" style="color: #000000;"></i><p>History</p></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-user-plus fa-sm" style="color: #000000;"></i><p>Blog</p></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container text-center position-relative">
+        <h1 class="hero-title">QuickYTDownload Blog</h1>
+        <p class="hero-subtitle">
+          Your ultimate resource for YouTube downloading tips, tricks, and
+          tutorials
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog Posts Section -->
+    <section class="blog-posts">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2 class="mb-5">Latest Articles</h2>
+
+            <!-- Blog Post 1 -->
+            <div class="row g-4 mb-5 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eaa819a0-12be-457d-b5dd-19a1ac8210a1.png"
+                  alt="Side-by-side comparison of different video quality options in YouTube downloader interface"
+                  class="img-fluid blog-img rounded"
+                />
+              </div>
+              <div class="col-md-7">
+                <span class="badge-category">Tutorial</span>
+                <h3 class="blog-title">
+                  How to Download YouTube Videos in HD Quality
+                </h3>
+                <p class="blog-date">
+                  <i class="far fa-calendar-alt me-2"></i>June 12, 2023
+                </p>
+                <p>
+                  Learn how to download high-quality YouTube videos with our
+                  simple step-by-step guide. We'll show you the best settings
+                  for both audio and video...
+                </p>
+                <a href="#" class="read-more"
+                  >Read More <i class="fas fa-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="row g-4 mb-5 align-items-center">
+              <div class="col-md-5">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f11508a9-1c88-4cd8-8f3b-99c7e14132f1.png"
+                  alt="Three different mobile devices displaying YouTube downloader apps with download progress"
+                  class="img-fluid blog-img rounded"
+                />
+              </div>
+              <div class="col-md-7">
+                <span class="badge-category">Tips</span>
+                <h3 class="blog-title">
+                  Top 5 YouTube Downloader Apps for Mobile
+                </h3>
+                <p class="blog-date">
+                  <i class="far fa-calendar-alt me-2"></i>May 28, 2023
+                </p>
+                <p>
+                  Discover the best YouTube downloader apps for Android and iOS
+                  devices. We've tested them all to help you find the most
+                  reliable options...
+                </p>
+                <a href="#" class="read-more"
+                  >Read More <i class="fas fa-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="row g-4 mb-5">
+              <div class="col-md-5 order-md-2">
+                <img
+                  src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3a02cf54-c868-4549-ad59-a7c3d7f8174d.png"
+                  alt="Computer screen showing YouTube downloader interface with playlist selection highlighted"
+                  class="img-fluid blog-img rounded"
+                />
+              </div>
+              <div class="col-md-7 order-md-1">
+                <span class="badge-category">How-To</span>
+                <h3 class="blog-title">
+                  Downloading Entire YouTube Playlists Just Got Easier
+                </h3>
+                <p class="blog-date">
+                  <i class="far fa-calendar-alt me-2"></i>May 15, 2023
+                </p>
+                <p>
+                  Save time by downloading entire playlists with just one click.
+                  Our latest feature makes it simple to get all your favorite
+                  content in one go...
+                </p>
+                <a href="#" class="read-more"
+                  >Read More <i class="fas fa-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation" class="mt-5">
+              <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                  <a
+                    class="page-link"
+                    href="#"
+                    tabindex="-1"
+                    aria-disabled="true"
+                    >Previous</a
+                  >
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="col-lg-4">
+            <div class="bg-light p-4 rounded mb-4">
+              <h4 class="mb-4">Search</h4>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search blog..."
+                />
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  style="background-color: var(--primary-color); border: none"
+                >
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="bg-light p-4 rounded mb-4">
+              <h4 class="mb-4">Categories</h4>
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none">Tutorials (12)</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none">Tips & Tricks (8)</a>
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none"
+                    >Product Updates (5)</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a href="#" class="text-decoration-none"
+                    >Troubleshooting (3)</a
+                  >
+                </li>
+                <li><a href="#" class="text-decoration-none">Others (6)</a></li>
+              </ul>
+            </div>
+
+            <div class="bg-light p-4 rounded mb-4">
+              <h4 class="mb-4">Popular Posts</h4>
+              <div class="mb-3">
+                <a href="#" class="text-decoration-none d-block mb-2"
+                  >How to Convert YouTube Videos to MP3</a
+                >
+                <small class="text-muted">April 30, 2023</small>
+              </div>
+              <div class="mb-3">
+                <a href="#" class="text-decoration-none d-block mb-2"
+                  >Fastest Ways to Download YouTube Videos</a
+                >
+                <small class="text-muted">April 18, 2023</small>
+              </div>
+              <div>
+                <a href="#" class="text-decoration-none d-block mb-2"
+                  >Fix: YouTube Downloader Not Working</a
+                >
+                <small class="text-muted">March 28, 2023</small>
+              </div>
+            </div>
+
+            <div class="bg-light p-4 rounded">
+              <h4 class="mb-4">Tags</h4>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="#" class="btn btn-sm btn-outline-secondary"
+                  >#youtube</a
+                >
+                <a href="#" class="btn btn-sm btn-outline-secondary"
+                  >#download</a
+                >
+                <a href="#" class="btn btn-sm btn-outline-secondary">#mp3</a>
+                <a href="#" class="btn btn-sm btn-outline-secondary">#hd</a>
+                <a href="#" class="btn btn-sm btn-outline-secondary"
+                  >#tutorial</a
+                >
+                <a href="#" class="btn btn-sm btn-outline-secondary">#mobile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>
