@@ -24,6 +24,6 @@ urlpatterns = [
     path('download/', views.download_video, name='download_video'),
     path('blog/', views.blog, name='blog'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
-
+    path('<slug:slug>/', views.blog_detail, name='blog_detail'),
 ]
 

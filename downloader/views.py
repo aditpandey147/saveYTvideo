@@ -154,3 +154,12 @@ def faq_view(request):
     ]
     return render(request, 'faq.html', {'faqs': faqs})
 
+# downloader/views.py
+from django.shortcuts import render
+from blog.models import Blog  # Replace with your blog model
+
+def home(request):
+    latest_blogs = Blog.objects.all().order_by('-created_at')[:4]
+    return render(request, 'downloader/index.html', {
+        'latest_blogs': latest_blogs
+    })
