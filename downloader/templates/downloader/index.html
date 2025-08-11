@@ -248,35 +248,7 @@
   </div>
   </div>
 </section>
-<section class="blog-section container my-5" itemscope itemtype="https://schema.org/Blog">
-    <meta itemprop="name" content="QuickyTD Blog">
-    <h2 class="text-center mb-4">Latest from Our Blog</h2>
-    <div class="row">
-        {% for post in latest_blogs %}
-        <article class="col-md-3 mb-4" itemscope itemtype="https://schema.org/BlogPosting">
-            <div class="card h-100 shadow-sm">
-                {% if post.image %}
-                <a href="{% url 'blog_detail' post.slug %}" itemprop="url">
-                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}" itemprop="image">
-                </a>
-                {% endif %}
-                <div class="card-body">
-                    <h3 class="card-title h5" itemprop="headline">
-                        <a href="{% url 'blog_detail' post.slug %}" itemprop="url">{{ post.title }}</a>
-                    </h3>
-                    <meta itemprop="datePublished" content="{{ post.created_at|date:'Y-m-d' }}">
-                    <p class="card-text" itemprop="description">
-                        {{ post.content|striptags|truncatewords:15 }}
-                    </p>
-                    <a href="{% url 'blog_detail' post.slug %}" class="btn btn-primary btn-sm">Read More</a>
-                </div>
-            </div>
-        </article>
-        {% empty %}
-        <p class="text-center">No blog posts yet.</p>
-        {% endfor %}
-    </div>
-</section>
+
 
 
 
